@@ -1,0 +1,61 @@
+{
+  "verbose": true,
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "strict": true,
+    "jsx": "preserve",
+    "noEmit": true,
+    "composite": true,
+    "incremental": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "experimentalDecorators": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "removeComments": true,
+    "noImplicitAny": false,
+    "baseUrl": ".",
+    "lib": ["esnext", "dom"],
+    "types": [
+      "vite/client",
+      "vite-plugin-pages/client",
+      "vite-plugin-vue-layouts/client"
+    ],
+    "typeRoots": ["node_modules/@types", "typings"],
+
+    "paths": {
+      "*": ["types/*"],
+      "@/*": ["src/*"]
+    },
+
+    "plugins": [
+      {
+        "name": "@vuedx/typescript-plugin-vue"
+      }
+    ]
+  },
+
+  "include": [
+    "build/**/*.ts",
+    "build/**/*.d.ts",
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.vue",
+    "vite/**/*.ts",
+    "vite/**/*.d.ts",
+    "vite.config.ts"
+  ],
+
+  "exclude": [
+    "node_modules",
+    "public",
+    "commitlint.config.js",
+    "postcss.config.js",
+    "stylelint.config.js"
+  ]
+}
