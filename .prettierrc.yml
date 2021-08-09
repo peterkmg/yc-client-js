@@ -3,10 +3,3 @@ semi: false
 singleQuote: true
 quoteProps: consistent
 trailingComma: all
-overrides:
-  - files:
-      - '*.html'
-      - '*.css'
-      - '*.scss'
-    options:
-      singleQuote: false

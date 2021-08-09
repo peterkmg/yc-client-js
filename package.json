@@ -13,7 +13,7 @@
   "dependencies": {
     "@vueuse/integrations": "^5.2.0",
     "element-plus": "^1.0.2-beta.70",
-    "pinia": "^0.5.3",
+    "pinia": "^2.0.0-beta.5",
     "vee-validate": "^4.4.9",
     "vue": "^3.1.5",
     "vue-global-api": "^0.4.1",
@@ -28,6 +28,7 @@
     "@vuedx/typescript-plugin-vue": "^0.7.4",
     "eslint": "^7.32.0",
     "husky": "^7.0.1",
+    "modern-normalize": "^1.1.0",
     "sass": "^1.37.5",
     "stylelint": "^13.13.1",
     "stylelint-config-recommended-scss": "^4.3.0",
@@ -37,7 +38,7 @@
     "typescript": "^4.3.5",
     "vite": "^2.4.4",
     "vite-plugin-components": "^0.13.2",
-    "vite-plugin-pages": "^0.16.0",
+    "vite-plugin-pages": "^0.17.0",
     "vite-plugin-svg-icons": "^1.0.4",
     "vite-plugin-vue-layouts": "^0.3.1",
     "vue-tsc": "^0.2.2"

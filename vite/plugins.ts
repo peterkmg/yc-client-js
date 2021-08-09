@@ -1,3 +1,4 @@
+import { resolve } from 'path'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
@@ -9,13 +10,13 @@ export default () => {
     Vue(),
     Pages({
       pagesDir: 'src/views',
-      /* extendRoute(route) {
-            // Allow for unauthorized
-            if (route.path === '/login') return route
+      extendRoute(route) {
+        // Allow for unauthorized
+        if (route.path === '/login') return route
 
-            // Augment the route with meta that indicates that the route requires authentication.
-            return { ...route, meta: { requiresAuth: true } }
-          }, */
+        // Augment the route with meta that indicates that the route requires authentication.
+        return { ...route, meta: { requiresAuth: true } }
+      },
     }),
     Layouts(),
     ViteComponents({
@@ -25,7 +26,8 @@ export default () => {
       customComponentResolvers: [ElementPlusResolver({ importStyle: true })],
     }),
     ViteSvgIcons({
-      iconDirs: ['src/assets/svg'],
+      iconDirs: [resolve(process.cwd(), 'src/assets/svg')],
+      svgoOptions: false,
       symbolId: 'icon-[dir]-[name]',
     }),
   ]

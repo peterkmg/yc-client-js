@@ -10,7 +10,8 @@ specifiers:
   element-plus: ^1.0.2-beta.70
   eslint: ^7.32.0
   husky: ^7.0.1
-  pinia: ^0.5.3
+  modern-normalize: ^1.1.0
+  pinia: ^2.0.0-beta.5
   sass: ^1.37.5
   stylelint: ^13.13.1
   stylelint-config-recommended-scss: ^4.3.0
@@ -21,7 +22,7 @@ specifiers:
   vee-validate: ^4.4.9
   vite: ^2.4.4
   vite-plugin-components: ^0.13.2
-  vite-plugin-pages: ^0.16.0
+  vite-plugin-pages: ^0.17.0
   vite-plugin-svg-icons: ^1.0.4
   vite-plugin-vue-layouts: ^0.3.1
   vue: ^3.1.5
@@ -33,7 +34,7 @@ specifiers:
 dependencies:
   '@vueuse/integrations': 5.2.0_vue@3.1.5
   element-plus: 1.0.2-beta.70_vue@3.1.5
-  pinia: 0.5.3
+  pinia: 2.0.0-beta.5_typescript@4.3.5
   vee-validate: 4.4.9_vue@3.1.5
   vue: 3.1.5
   vue-global-api: 0.4.1_vue@3.1.5
@@ -48,6 +49,7 @@ devDependencies:
   '@vuedx/typescript-plugin-vue': 0.7.4
   eslint: 7.32.0
   husky: 7.0.1
+  modern-normalize: 1.1.0
   sass: 1.37.5
   stylelint: 13.13.1
   stylelint-config-recommended-scss: 4.3.0_fd1d61e57b9553f3887f804324f52132
@@ -57,7 +59,7 @@ devDependencies:
   typescript: 4.3.5
   vite: 2.4.4
   vite-plugin-components: 0.13.2_vite@2.4.4
-  vite-plugin-pages: 0.16.0_a95bb6b02fb0010eec7c5fe32d7277db
+  vite-plugin-pages: 0.17.0_a95bb6b02fb0010eec7c5fe32d7277db
   vite-plugin-svg-icons: 1.0.4_vite@2.4.4
   vite-plugin-vue-layouts: 0.3.1_vite@2.4.4
   vue-tsc: 0.2.2_typescript@4.3.5
@@ -3724,6 +3726,11 @@ packages:
       is-extendable: 1.0.1
     dev: true
 
+  /modern-normalize/1.1.0:
+    resolution: {integrity: sha512-2lMlY1Yc1+CUy0gw4H95uNN7vjbpoED7NNRSBHE25nWfLBdmMzFCsPshlzbxHz+gYMcBEUN8V4pU16prcdPSgA==}
+    engines: {node: '>=6'}
+    dev: true
+
   /ms/2.0.0:
     resolution: {integrity: sha1-VgiurfwAvmwpAd9fmGF4jeDVl8g=}
     dev: true
@@ -4086,8 +4093,16 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /pinia/0.5.3:
-    resolution: {integrity: sha512-GNxooVIOCf+uLRQK6IEXVuI6GSReELW0YAOowoKslzWtqGdBkjwq4hP+AVxvmVXBSE+yqUhDxtpIce5+2j2F9Q==}
+  /pinia/2.0.0-beta.5_typescript@4.3.5:
+    resolution: {integrity: sha512-0XvufXNkEvl7Fk6wrg5DH/JYPihkoknet950SQNIlWxXpeI7omwR0H00QPIiEYkrdbsiHXJyvI2XndWGvD4v5A==}
+    peerDependencies:
+      typescript: ^4.3.5
+    peerDependenciesMeta:
+      typescript:
+        optional: true
+    dependencies:
+      '@vue/devtools-api': 6.0.0-beta.15
+      typescript: 4.3.5
     dev: false
 
   /pkg-dir/2.0.0:
@@ -5500,8 +5515,8 @@ packages:
       - supports-color
     dev: true
 
-  /vite-plugin-pages/0.16.0_a95bb6b02fb0010eec7c5fe32d7277db:
-    resolution: {integrity: sha512-15DO3/NNuv6DxvudT2RZq8Uf9jSYapoTqu8ypqyb9Uz3DhdwhOEA0D+QdHaWPgMruGaOYU9C1XapZYVJTisd7w==}
+  /vite-plugin-pages/0.17.0_a95bb6b02fb0010eec7c5fe32d7277db:
+    resolution: {integrity: sha512-gmRyS6E5MzFrGArSRoxmclKN5z+JyyDsg/SIbXYP9a/ntVZo4av22BNoBDIrshm2q40u0QLgqptFOVo7z7gYvQ==}
     peerDependencies:
       '@vue/compiler-sfc': '>=3'
       vite: '>=2'
