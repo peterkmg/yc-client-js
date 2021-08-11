@@ -1,27 +1,28 @@
 #app {
   .main-container {
-    min-height: 100%;
-    transition: margin-left 0.28s;
-    margin-left: $sideBarWidth;
     position: relative;
+    min-height: 100%;
+    margin-left: $sideBarWidth;
+    transition: margin-left 0.28s;
   }
 
   .sidebar-container {
-    transition: width 0.28s;
-    width: $sideBarWidth !important;
-    background-color: $menuBg;
-    height: 100%;
     position: fixed;
-    font-size: 0;
     top: 0;
     bottom: 0;
     left: 0;
     z-index: 1001;
     overflow: hidden;
+    width: $sideBarWidth !important;
+    height: 100%;
+    background-color: $menuBg;
+    font-size: 0;
+    transition: width 0.28s;
 
     // reset element-ui css
     .horizontal-collapse-transition {
-      transition: 0s width ease-in-out, 0s padding-left ease-in-out, 0s padding-right ease-in-out;
+      transition: 0s width ease-in-out, 0s padding-left ease-in-out,
+        0s padding-right ease-in-out;
     }
 
     .scrollbar-wrapper {
@@ -48,8 +49,8 @@
 
     a {
       display: inline-block;
-      width: 100%;
       overflow: hidden;
+      width: 100%;
     }
 
     .svg-icon {
@@ -62,9 +63,9 @@
     }
 
     .el-menu {
-      border: none;
-      height: 100%;
       width: 100% !important;
+      height: 100%;
+      border: none;
     }
 
     // menu hover
@@ -100,8 +101,8 @@
     }
 
     .submenu-title-noDropdown {
-      padding: 0 !important;
       position: relative;
+      padding: 0 !important;
 
       .el-tooltip {
         padding: 0 !important;
@@ -140,11 +141,11 @@
       .el-submenu {
         & > .el-submenu__title {
           & > span {
-            height: 0;
-            width: 0;
-            overflow: hidden;
-            visibility: hidden;
             display: inline-block;
+            overflow: hidden;
+            width: 0;
+            height: 0;
+            visibility: hidden;
           }
         }
       }
@@ -153,26 +154,6 @@
 
   .el-menu--collapse .el-menu .el-submenu {
     min-width: $sideBarWidth !important;
-  }
-
-  // mobile responsive
-  .mobile {
-    .main-container {
-      margin-left: 0;
-    }
-
-    .sidebar-container {
-      transition: transform 0.28s;
-      width: $sideBarWidth !important;
-    }
-
-    &.hideSidebar {
-      .sidebar-container {
-        pointer-events: none;
-        transition-duration: 0.3s;
-        transform: translate3d(-$sideBarWidth, 0, 0);
-      }
-    }
   }
 
   .withoutAnimation {
@@ -205,9 +186,9 @@
   }
 
   // the scroll bar appears when the subMenu is too long
-  >.el-menu--popup {
-    max-height: 100vh;
+  > .el-menu--popup {
     overflow-y: auto;
+    max-height: 100vh;
 
     &::-webkit-scrollbar-track-piece {
       background: #d3dce6;
@@ -218,8 +199,8 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #99a9bf;
       border-radius: 20px;
+      background: #99a9bf;
     }
   }
 }

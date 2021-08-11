@@ -3,12 +3,20 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    Breadcrumb: typeof import('./src/components/molecules/Breadcrumb.vue')['default']
     ElButton: typeof import('element-plus/es/el-button')['default']
-    ElForm: typeof import('element-plus/es/el-form')['default']
-    ElFormItem: typeof import('element-plus/es/el-form-item')['default']
-    ElInput: typeof import('element-plus/es/el-input')['default']
-    ElTooltip: typeof import('element-plus/es/el-tooltip')['default']
-    SvgIcon: typeof import('./src/components/SvgIcon.vue')['default']
+    ElContainer: typeof import('element-plus/es/el-container')['default']
+    ElDropdown: typeof import('element-plus/es/el-dropdown')['default']
+    ElDropdownItem: typeof import('element-plus/es/el-dropdown-item')['default']
+    ElDropdownMenu: typeof import('element-plus/es/el-dropdown-menu')['default']
+    ElScrollbar: typeof import('element-plus/es/el-scrollbar')['default']
+    Hamburger: typeof import('./src/components/atoms/Hamburger.vue')['default']
+    Icon: typeof import('@iconify/vue')['Icon']
+    Screenfull: typeof import('./src/components/atoms/Screenfull.vue')['default']
+    SideBar: typeof import('./src/components/organisms/SideBar.vue')['default']
+    SideBarItem: typeof import('./src/components/molecules/SideBarItem.vue')['default']
+    TopBar: typeof import('./src/components/organisms/TopBar.vue')['default']
+    TopBarRightMenu: typeof import('./src/components/molecules/TopBarRightMenu.vue')['default']
   }
 }
 

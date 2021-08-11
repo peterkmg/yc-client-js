@@ -1,6 +1,11 @@
 <template>
   <div class="login-container">
-    <el-form :model="loginForm" class="login-form" autocomplete="on" label-position="left">
+    <el-form
+      :model="loginForm"
+      class="login-form"
+      autocomplete="on"
+      label-position="left"
+    >
       <div class="title-container">
         <h3 class="title">
           Login Form
@@ -8,7 +13,10 @@
 
         <el-form-item prop="username">
           <span class="svg-container">
-            <svg-icon icon-class="user" />
+            <Icon
+              icon="local:user"
+              style="vertical-align: middle; margin-bottom: 0.55em"
+            />
           </span>
           <el-input
             v-model="loginForm.username"
@@ -20,29 +28,49 @@
           />
         </el-form-item>
 
-        <el-tooltip v-model="loginForm.capsTooltip" content="Caps lock is On" placement="right" manual>
+        <el-tooltip
+          v-model="loginForm.capsTooltip"
+          content="Caps lock is On"
+          placement="right"
+          manual
+        >
           <el-form-item prop="password">
             <span class="svg-container">
-              <svg-icon icon-class="password" />
+              <Icon
+                icon="local:password"
+                style="vertical-align: middle; margin-bottom: 0.55em"
+              />
             </span>
-            <el-input placeholder="Password" name="password" tabindex="2" autocomplete="on" />
+            <el-input
+              placeholder="Password"
+              name="password"
+              tabindex="2"
+              autocomplete="on"
+            />
             <span class="show-pwd">
-              <svg-icon icon-class="eye" />
+              <Icon
+                icon="local:eye"
+                style="vertical-align: -webkit-baseline-middle"
+              />
             </span>
           </el-form-item>
         </el-tooltip>
 
-        <el-button type="primary" style="width: 100%; margin-bottom: 30px;">
+        <el-button
+          type="primary"
+          style="width: 100%; margin-bottom: 30px"
+          @click="login"
+        >
           Login
         </el-button>
 
-        <div style="position: relative;">
+        <div style="position: relative">
           <div class="tips">
             <span>Username : admin</span>
             <span>Password : any</span>
           </div>
           <div class="tips">
-            <span style="margin-right: 18px;">Username : editor</span>
+            <span style="margin-right: 18px">Username : editor</span>
             <span>Password : any</span>
           </div>
         </div>
@@ -52,6 +80,11 @@
 </template>
 
 <script lang="ts" setup>
+import { useRouter } from 'vue-router'
+import useUserStore from '@/store/modules/user'
+
+const userStore = useUserStore()
+const router = useRouter()
 
 const loginForm = reactive({
   username: 'admin',
@@ -59,6 +92,11 @@ const loginForm = reactive({
   capsTooltip: false,
   loading: false,
 })
+
+const login = async() => {
+  userStore.login()
+  router.push('/dashboard')
+}
 </script>
 
 <style lang="scss">
@@ -80,17 +118,17 @@ $cursor: #fff;
 .login-container {
   .el-input {
     display: inline-block;
-    height: 47px;
     width: 85%;
+    height: 47px;
 
     input {
-      background: transparent;
-      border: 0;
-      -webkit-appearance: none;
-      border-radius: 0;
-      padding: 12px 5px 12px 15px;
-      color: $light_gray;
       height: 47px;
+      padding: 12px 5px 12px 15px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: $light_gray;
+      -webkit-appearance: none;
       caret-color: $cursor;
 
       &:-webkit-autofill {
@@ -102,8 +140,8 @@ $cursor: #fff;
 
   .el-form-item {
     border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    background: rgba(0, 0, 0, 0.1);
     color: #454545;
   }
 }
@@ -115,24 +153,24 @@ $dark_gray: #889aa4;
 $light_gray: #eee;
 
 .login-container {
-  min-height: 100%;
-  width: 100%;
-  background-color: $bg;
   overflow: hidden;
+  width: 100%;
+  min-height: 100%;
+  background-color: $bg;
 
   .login-form {
     position: relative;
+    overflow: hidden;
     width: 520px;
     max-width: 100%;
-    padding: 160px 35px 0;
     margin: 0 auto;
-    overflow: hidden;
+    padding: 160px 35px 0;
   }
 
   .tips {
-    font-size: 14px;
-    color: #fff;
     margin-bottom: 10px;
+    color: #fff;
+    font-size: 14px;
 
     span {
       &:first-of-type {
@@ -142,31 +180,31 @@ $light_gray: #eee;
   }
 
   .svg-container {
-    padding: 6px 5px 6px 15px;
-    color: $dark_gray;
+    display: inline-block;
     vertical-align: middle;
     width: 30px;
-    display: inline-block;
+    padding: 6px 5px 6px 15px;
+    color: $dark_gray;
   }
 
   .title-container {
     position: relative;
 
     .title {
-      font-size: 26px;
-      color: $light_gray;
       margin: 0 auto 40px auto;
-      text-align: center;
+      color: $light_gray;
       font-weight: bold;
+      font-size: 26px;
+      text-align: center;
     }
   }
 
   .show-pwd {
     position: absolute;
-    right: 10px;
     top: 7px;
-    font-size: 16px;
+    right: 10px;
     color: $dark_gray;
+    font-size: 16px;
     cursor: pointer;
     user-select: none;
   }
@@ -175,10 +213,8 @@ $light_gray: #eee;
     position: absolute;
     right: 0;
     bottom: 6px;
-  }
 
-  @media only screen and (max-width: 470px) {
-    .thirdparty-button {
+    @media only screen and (max-width: 470px) {
       display: none;
     }
   }
@@ -187,5 +223,6 @@ $light_gray: #eee;
 
 <route lang="yaml">
 meta:
+  title: Login
   layout: empty
 </route>

@@ -1,13 +1,12 @@
 module.exports = {
-  plugins: ['stylelint-scss'],
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-recommended-scss',
-    'stylelint-rscss/config',
-  ],
+  extends: ['@dword-design/stylelint-config'],
   rules: {
     'no-descending-specificity': null,
-    'rscss/class-format': false,
-    'rscss/no-descendant-combinator': false,
+    'selector-pseudo-class-no-unknown': [
+      true,
+      {
+        ignorePseudoClasses: ['deep'],
+      },
+    ],
   },
 }
