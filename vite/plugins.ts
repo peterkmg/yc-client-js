@@ -1,7 +1,10 @@
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import Components, { ElementPlusResolver } from 'vite-plugin-components'
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import Components from 'unplugin-vue-components/vite'
+import AutoImport from 'unplugin-auto-import/vite'
+import commonjsExternals from 'vite-plugin-commonjs-externals'
 import { IconifyVueResolver } from './resolvers'
 
 export default () => {
@@ -11,14 +14,27 @@ export default () => {
       pagesDir: 'src/views',
     }),
     Layouts(),
-    Components({
-      // generate `components.d.ts` for ts support with Volar
-      globalComponentsDeclaration: true,
+    AutoImport({
+      // targets to transform
+      include: [
+        /\.[tj]sx?$/, // .ts, .tsx, .js, .jsx
+        /\.vue\??/, // .vue
+      ],
 
-      customComponentResolvers: [
+      // global imports to register
+      imports: [
+        // presets
+        'vue',
+        'vue-router',
+      ]
+    }),
+    Components({
+      dts: true,
+      resolvers: [
         ElementPlusResolver({ importStyle: true }),
         IconifyVueResolver(),
       ],
     }),
+    commonjsExternals({ externals: ['path'] }),
   ]
 }

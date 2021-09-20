@@ -1,18 +1,14 @@
 import { useNProgress } from '@vueuse/integrations'
-import type { Router, RouteRecordRaw } from 'vue-router'
+import type { Router } from 'vue-router'
 import useUserStore from '@/store/modules/user'
 
 const { start, done } = useNProgress(null, {
   showSpinner: false,
 })
 
-export default (router: Router, routes: RouteRecordRaw[]) => {
+export default (router: Router) => {
   router.beforeEach((to, from, next) => {
     const userStore = useUserStore()
-    // eslint-disable-next-line no-console
-    console.log(`route path:${to.path}`)
-    // eslint-disable-next-line no-console
-    console.log(JSON.stringify(routes))
 
     if (to.meta.requiresAuth && !userStore.isAuthenticated) {
       // eslint-disable-next-line no-console

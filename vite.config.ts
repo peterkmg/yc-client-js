@@ -1,6 +1,6 @@
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
-import getTheme from './vite/theme'
+import { generateCSSVariables } from './src/config/theme'
 import getPluginsConfig from './vite/plugins'
 
 export default defineConfig({
@@ -23,7 +23,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: getTheme(),
+        additionalData: generateCSSVariables(),
       },
     },
   },

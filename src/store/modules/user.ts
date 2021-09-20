@@ -15,9 +15,9 @@ export default defineStore({
     icon: 'ci:user-circle',
   }),
   getters: {
-    getUsername: (state) => state.name,
-    getUserIcon: (state) => state.icon,
-    isAuthenticated: (state) => state.token !== '',
+    getUsername: (state): string => state.name,
+    getUserIcon: (state): string => state.icon,
+    isAuthenticated: (state): boolean => state.token !== '',
   },
   actions: {
     login() {

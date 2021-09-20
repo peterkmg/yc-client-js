@@ -25,5 +25,5 @@ watch(
 </script>
 
 <style lang="scss">
-@import '@/styles/base.scss';
+@import '@/styles/index.scss';
 </style>

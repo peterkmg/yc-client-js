@@ -1,10 +1,11 @@
 <template>
   <div>
-    <h3>User Profile Page</h3>
+    <h3>Another Nested Page</h3>
   </div>
 </template>
 
 <route lang="yaml">
 meta:
-  title: User Profile
+  nav: true
+  title: Another nested
 </route>

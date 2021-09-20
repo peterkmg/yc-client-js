@@ -22,3 +22,9 @@ const changeIcon = () => {
   otherIcon.value = oldIcon
 }
 </script>
+
+<route lang="yaml">
+meta:
+  nav: true
+  title: Dashboard
+</route>

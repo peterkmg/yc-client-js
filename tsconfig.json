@@ -31,7 +31,7 @@
     "paths": {
       "*": ["types/*"],
       "@/*": ["src/*"]
-    },
+    }
   },
 
   "include": [
@@ -42,6 +42,8 @@
     "src/**/*.vue",
     "vite/**/*.ts",
     "vite/**/*.d.ts",
+    "auto-imports.d.ts",
+    "components.d.ts",
     "vite.config.ts"
   ],
 

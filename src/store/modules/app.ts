@@ -1,22 +1,49 @@
 import { defineStore } from 'pinia'
+import type { MenuMapItem } from '@/config/menuMap'
+import menuItems from '@/config/menuMap'
 
 export interface AppState {
   sidebar: boolean
-  size: 'small' | 'medium' | 'large'
+  sidebarWidth: string
+  menuItems: MenuMapItem[]
 }
 
 export default defineStore({
   id: 'app',
   state: (): AppState => ({
     sidebar: true,
-    size: 'medium',
+    sidebarWidth: '210px',
+    menuItems,
   }),
   getters: {
-    isSidebarOpen: (state): boolean => { return state.sidebar },
-    getSize: (state): string => { return state.size },
+    isSidebarOpen: (state): boolean => {
+      return state.sidebar
+    },
+    getSidebarWidth: (state): string => {
+      return state.sidebarWidth
+    },
+    getMenuItems: (state): MenuMapItem[] => {
+      return state.menuItems
+    },
   },
   actions: {
-    toggleSidebar() { this.sidebar = !this.sidebar },
-    setSize(size: 'small' | 'medium' | 'large') { this.size = size },
+    toggleSidebar() {
+      if (this.sidebar)
+        this.closeSidebar()
+      else
+        this.openSidebar()
+    },
+    openSidebar() {
+      if (!this.sidebar) {
+        this.sidebar = !this.sidebar
+        this.sidebarWidth = "210px"
+      }
+    },
+    closeSidebar() {
+      if (this.sidebar) {
+        this.sidebar = !this.sidebar
+        this.sidebarWidth = "64px"
+      }
+    }
   },
 })
