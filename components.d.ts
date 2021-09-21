@@ -4,10 +4,10 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AsideContent: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/organisms/AsideContent.vue')['default']
-    AsideMenuItem: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/molecules/AsideMenuItem.vue')['default']
+    AsideContent: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/AsideContent.vue')['default']
+    AsideMenuItem: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/AsideMenuItem.vue')['default']
     AsideMenuItemTitle: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/atoms/AsideMenuItemTitle.vue')['default']
-    Breadcrumb: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/molecules/Breadcrumb.vue')['default']
+    Breadcrumb: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/Breadcrumb.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElContainer: typeof import('element-plus/es')['ElContainer']
@@ -20,11 +20,13 @@ declare module 'vue' {
     ElMenuItem: typeof import('element-plus/es')['ElMenuItem']
     ElScrollbar: typeof import('element-plus/es')['ElScrollbar']
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
-    Hamburger: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/atoms/Hamburger.vue')['default']
-    HeaderContent: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/organisms/HeaderContent.vue')['default']
-    HeaderRightMenu: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/molecules/HeaderRightMenu.vue')['default']
+    ElTable: typeof import('element-plus/es')['ElTable']
+    ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
+    Hamburger: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/atoms/Hamburger.vue')['default']
+    HeaderContent: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/HeaderContent.vue')['default']
+    HeaderRightMenu: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/HeaderRightMenu.vue')['default']
     Icon: typeof import('@iconify/vue')['Icon']
-    Screenfull: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/atoms/Screenfull.vue')['default']
+    Screenfull: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/atoms/Screenfull.vue')['default']
   }
 }
 
