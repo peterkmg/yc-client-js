@@ -4,7 +4,6 @@ import Layouts from 'vite-plugin-vue-layouts'
 import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
-import commonjsExternals from 'vite-plugin-commonjs-externals'
 import { IconifyVueResolver } from './resolvers'
 
 export default () => {
@@ -12,6 +11,11 @@ export default () => {
     Vue(),
     Pages({
       pagesDir: 'src/views',
+      extendRoute(route) {
+        if (route.path === '/login')
+          return route
+        return { ...route, meta: { requiresAuth: true } }
+      }
     }),
     Layouts(),
     AutoImport({
@@ -34,7 +38,6 @@ export default () => {
         ElementPlusResolver({ importStyle: true }),
         IconifyVueResolver(),
       ],
-    }),
-    commonjsExternals({ externals: ['path'] }),
+    })
   ]
 }

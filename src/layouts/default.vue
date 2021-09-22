@@ -5,7 +5,7 @@
     </el-aside>
 
     <el-container class="main-container">
-      <el-header style="padding: 0; border-top: 0;">
+      <el-header class="header">
         <HeaderContent />
       </el-header>
 
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import useAppStore from '@/store/modules/app'
+import useAppStore from '@/store/app'
 
 const appStore = useAppStore()
 </script>
@@ -32,8 +32,11 @@ const appStore = useAppStore()
   }
 
   > .main-container {
-    position: relative;
-
+    >.header {
+      height: 50px;
+      padding: 0;
+      box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
+    }
   }
 }
 </style>

@@ -3,10 +3,8 @@
     <screenfull class="right-menu-item" />
     <el-dropdown class="right-menu-item" trigger="click">
       <div style="height: inherit">
-        <Icon icon="ci:user-circle" width="34" style="vertical-align: -2em" />
-        <strong style="vertical-align: -1.2em; padding: 3px">{{
-          userStore.getUsername || 'Petr Komogortsev'
-        }}</strong>
+        <Icon :icon="auth.userdata.icon" width="34" style="vertical-align: -2em" />
+        <strong style="vertical-align: -1.2em; padding: 3px">{{ auth.userdata.username }}</strong>
         <Icon
           icon="ant-design:caret-down-filled"
           style="vertical-align: -2.4em"
@@ -27,16 +25,11 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
-import useUserStore from '@/store/modules/user'
+import supabase from '@/database'
+import useAuthStore from '@/store/auth'
 
-const userStore = useUserStore()
-const router = useRouter()
-
-const logout = () => {
-  userStore.$reset()
-  router.push('/login')
-}
+const auth = useAuthStore()
+const logout = async () => await supabase.auth.signOut()
 </script>
 
 <style lang="scss" scoped>

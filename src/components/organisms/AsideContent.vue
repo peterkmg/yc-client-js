@@ -20,7 +20,7 @@
 
 <script lang="ts" setup>
 import { themeVariables } from '@/config/theme'
-import useAppStore from '@/store/modules/app'
+import useAppStore from '@/store/app'
 
 const appStore = useAppStore()
 const theme = computed(() => themeVariables)

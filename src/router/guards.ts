@@ -1,25 +1,17 @@
-import { useNProgress } from '@vueuse/integrations'
+import { start, done } from 'nprogress'
 import type { Router } from 'vue-router'
-import useUserStore from '@/store/modules/user'
-
-const { start, done } = useNProgress(null, {
-  showSpinner: false,
-})
+import useAuthStore from '@/store/auth'
 
 export default (router: Router) => {
   router.beforeEach((to, from, next) => {
-    const userStore = useUserStore()
+    // start nprogress animation
+    start()
 
-    if (to.meta.requiresAuth && !userStore.isAuthenticated) {
-      // eslint-disable-next-line no-console
-      console.log('Redirecting unauthenticated user to /login')
-      next('/login')
-    }
-    else {
-      // start nprogress animation
-      start()
-      next()
-    }
+    const auth = useAuthStore()
+    /* console.log(JSON.stringify(router.getRoutes())) */
+    if (to.meta.requiresAuth && auth.isAuthenticated === false) next({ path: '/login' })
+    else if (to.path === '/login' && auth.isAuthenticated === true) next({ path: '/dashboard'})
+    else next()
   })
 
   router.afterEach(() => {

@@ -18,7 +18,7 @@ export default defineConfig({
     },
   },
   optimizeDeps: {
-    include: ['vue', 'vue-router', 'pinia', '@iconify/vue'],
+    include: ['vue', 'pinia', 'vue-router', '@iconify/vue'],
   },
   css: {
     preprocessorOptions: {

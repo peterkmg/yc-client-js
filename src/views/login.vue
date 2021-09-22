@@ -3,7 +3,7 @@
     <el-header />
     <el-main>
       <el-form
-        :model="loginForm"
+        :model="formData"
         class="login-form"
         autocomplete="on"
         label-position="left"
@@ -14,16 +14,12 @@
           </h3>
 
           <el-form-item prop="username">
-            <span class="svg-container">
-              <Icon
-                icon="local:user"
-                style="vertical-align: middle; margin-bottom: 0.55em"
-              />
-            </span>
+            <Icon :icon="formData.usernameBoxIcon"
+              style="margin-left: 12px;" />
             <el-input
-              v-model="loginForm.username"
-              placeholder="username"
-              name="username"
+              v-model="formData.email"
+              placeholder="почта"
+              name="email"
               type="text"
               tabindex="1"
               autocomplete="on"
@@ -31,37 +27,31 @@
           </el-form-item>
 
           <el-tooltip
-            v-model="loginForm.capsTooltip"
+            v-model="formData.capsTooltip"
             content="Caps lock is On"
             placement="right"
             manual
           >
             <el-form-item prop="password">
-              <span class="svg-container">
-                <Icon
-                  icon="local:password"
-                  style="vertical-align: middle; margin-bottom: 0.55em"
-                />
-              </span>
+              <Icon :icon="formData.passwordBoxIcon"
+                style="margin-left: 12px;" />
               <el-input
-                placeholder="Password"
+                v-model="formData.password"
+                :type="formData.passwordBoxType"
+                placeholder="пароль"
                 name="password"
                 tabindex="2"
                 autocomplete="on"
               />
-              <span class="svg-container">
-                <Icon
-                  icon="local:eye"
-                  style="vertical-align: -webkit-baseline-middle"
-                />
-              </span>
+              <Icon :icon="formData.passwordBoxSideIcon" @click="togglePasswordBoxType" />
             </el-form-item>
           </el-tooltip>
 
           <el-button
+            :loading="formData.loading"
             type="primary"
             style="width: 100%; margin-bottom: 30px"
-            @click="login"
+            @click="signIn"
           >
             Login
           </el-button>
@@ -73,26 +63,78 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter } from 'vue-router'
-import useUserStore from '@/store/modules/user'
+import useAuthStore from '@/store/auth'
+import { ElMessage } from 'element-plus/es'
 
-const userStore = useUserStore()
-const router = useRouter()
-
-const loginForm = reactive({
-  username: 'admin',
-  password: '111111',
+const formData = reactive({
+  email: '',
+  password: '',
+  passwordBoxType: 'password',
+  passwordBoxIcon: 'majesticons:lock-closed-line',
+  usernameBoxIcon: 'majesticons:user-line',
+  passwordBoxSideIcon: 'majesticons:eye-line',
   capsTooltip: false,
   loading: false,
 })
 
-const login = async() => {
-  userStore.login()
-  router.push('/dashboard')
+const togglePasswordBoxType = () => {
+  if (formData.passwordBoxType === 'password'){
+    formData.passwordBoxType = 'text'
+    formData.passwordBoxSideIcon = 'majesticons:eye-off-line'
+  } else {
+    formData.passwordBoxType = 'password'
+    formData.passwordBoxSideIcon = 'majesticons:eye-line'
+  }
+}
+
+const auth = useAuthStore()
+const signIn = async() => {
+  formData.loading = true
+  const error = await auth.signIn(formData.email, formData.password)
+  if (error)
+    ElMessage({ type: 'error', message: error.message })
+  formData.loading = false
 }
 </script>
 
 <style lang="scss" scoped>
+.iconify {
+  width: 20px;
+  height: 100%;
+  color: $dark-grey;
+}
+
+:deep(.el-form-item) {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.1);
+  color: #454545;
+  .el-form-item__content {
+    display: inline-flex;
+  }
+  .el-input {
+    width: 85%;
+    height: 100%;
+
+    input {
+      height: 47px;
+      padding: 12px 5px 12px 15px;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      color: $light-grey;
+      -webkit-appearance: none;
+      caret-color: $white;
+
+      &:-webkit-autofill {
+        box-shadow: 0 0 0 1000px $login-bg-color inset !important;
+        -webkit-text-fill-color: $white !important;
+      }
+    }
+  }
+}
+
+
 .login-container {
   overflow: hidden;
   background-color: $login-bg-color;
@@ -116,43 +158,6 @@ const login = async() => {
         text-align: center;
       }
     }
-
-    :deep(.el-form-item) {
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 5px;
-      background: rgba(0, 0, 0, 0.1);
-      color: #454545;
-
-      .el-input {
-        display: inline-block;
-        width: 85%;
-        height: 47px;
-
-        input {
-          height: 47px;
-          padding: 12px 5px 12px 15px;
-          border: 0;
-          border-radius: 0;
-          background: transparent;
-          color: $light-grey;
-          -webkit-appearance: none;
-          caret-color: $white;
-
-          &:-webkit-autofill {
-            box-shadow: 0 0 0 1000px $login-bg-color inset !important;
-            -webkit-text-fill-color: $white !important;
-          }
-        }
-      }
-    }
-  }
-
-  .svg-container {
-    display: inline-block;
-    vertical-align: middle;
-    width: 30px;
-    padding: 6px 5px 6px 15px;
-    color: $dark-grey;
   }
 }
 </style>

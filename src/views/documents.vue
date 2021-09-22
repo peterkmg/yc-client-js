@@ -18,9 +18,7 @@
 </template>
 
 <script lang="ts" setup>
-import { useSupabase } from 'vue-3-supabase'
 
-const test = useSupabase()
 </script>
 
 <route lang="yaml">
