@@ -1,16 +1,32 @@
 <template>
-  <div id="wrapper">
-    <div id="left">
-      <Icon :icon="app.isSidebarOpen ? 'octicon:sidebar-collapse-24' : 'octicon:sidebar-expand-24'" />
+  <div id="wrapper" class="no-select">
+    <div class="hamburger header-item" @click="app.toggleSidebar">
+      <Icon :icon="app.isSidebarOpen ? 'octicon:sidebar-collapse-24' : 'octicon:sidebar-expand-24'"  style="transform: rotate(180deg);"/>
     </div>
-    <div id="right">
-      <div style=" display: flex; justify-content: space-around;width: 50px;">
+    <div class="right-menu">
+      <div class="header-item" style="display: flex; justify-content: space-around; width: 50px;">
         <Icon icon="majesticons:arrows-expand-line" />
       </div>
-      <div>
-        <Icon v-if="auth.userdata.icon" :icon="auth.userdata.icon" />
-        <strong>{{ auth.userdata.username }}</strong>
-      </div>
+      <el-dropdown class="dropdown header-item" trigger="click" style="padding-left: 4px;">
+        <div style="display: flex; justify-content: space-evenly; height: 100%;">
+          <Icon v-if="auth.userdata.icon" :icon="auth.userdata.icon" style="width: 28px; margin-right: 4px;" />
+          <div style="align-self: center; pointer-events: none">
+            <strong>{{ auth.userdata.username }}</strong>
+          </div>
+          <div style="align-self: end;">
+            <Icon icon="majesticons:chevron-down" style="width: 16px; height: 16px; margin-right: 4px;"/>
+          </div>
+        </div>
+
+        <template #dropdown>
+          <el-dropdown-menu class="no-select">
+            <router-link to="/profile">
+              <el-dropdown-item>Профиль</el-dropdown-item>
+            </router-link>
+            <el-dropdown-item divided @click="signOut">Выйти</el-dropdown-item>
+          </el-dropdown-menu>
+        </template>
+      </el-dropdown>
     </div>
   </div>
 </template>
@@ -18,35 +34,47 @@
 <script lang="ts" setup>
 import useAppStore from '@/store/app'
 import useAuthStore from '@/store/auth'
+import { ElMessage } from 'element-plus/es'
 
 const auth = useAuthStore()
 const app = useAppStore()
 
+const signOut = async () => {
+  const error = await auth.signOut()
+  if (error)
+    ElMessage({ type: 'error', message: error.message})
+}
 </script>
 
 <style lang="scss" scoped>
-#wrapper {
-  display: flex;
-  justify-content: space-between;
+.iconify {
+  width: 24px;
   height: 100%;
 }
-#left {
-  display: flex;
-  justify-content: space-around;
-  width: 50px;
+
+:deep(.header-item) {
   height: 100%;
+  color: var(--el-text-color-regular);
+  cursor: pointer;
 
   &:hover {
     background: rgba(0, 0, 0, 0.03);
   }
 }
-#right {
+
+#wrapper {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   height: 100%;
+  >.hamburger {
+    display: flex;
+    justify-content: space-around;
+    width: 50px;
+  }
+  >.right-menu {
+    display: flex;
+    justify-content: space-evenly;
+  }
 }
-.iconify {
-  width: 24px;
-  height: 100%;
-}
+
 </style>

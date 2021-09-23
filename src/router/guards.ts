@@ -10,7 +10,7 @@ export default (router: Router) => {
     const auth = useAuthStore()
     /* console.log(JSON.stringify(router.getRoutes())) */
     if (to.meta.requiresAuth && auth.isAuthenticated === false) next({ path: '/login' })
-    else if (to.path === '/login' && auth.isAuthenticated === true) next({ path: '/dashboard'})
+    else if (to.path === '/login' && auth.isAuthenticated === true) next({ path: '/home'})
     else next()
   })
 

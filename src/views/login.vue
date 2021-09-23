@@ -53,7 +53,7 @@
             style="width: 100%; margin-bottom: 30px"
             @click="signIn"
           >
-            Login
+            Войти
           </el-button>
         </div>
       </el-form>

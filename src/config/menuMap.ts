@@ -6,7 +6,12 @@ export interface MenuMapItem {
 }
 
 export default [
-  { index: "/dashboard", title: "Главная", icon: "majesticons:home-line" },
+  { index: "/home", title: "Главная", icon: "majesticons:home-line" },
+  {
+    index: "/dict", title: "Справочники", icon: "", children: [
+      { index: "/dict/companies", title: "Организации" },
+    ]
+  },
   { index: "/documents", title: "Документы", icon: "majesticons:file-text-line" },
   {
     index: "/nested", title: "Nested", icon: "majesticons:applications-add-line", children: [

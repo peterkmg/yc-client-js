@@ -1,3 +1,3 @@
 <route lang="yaml">
-redirect: /dashboard
+redirect: /home
 </route>

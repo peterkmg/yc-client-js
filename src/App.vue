@@ -32,7 +32,7 @@ supabase.auth.onAuthStateChange(
     if (event === 'SIGNED_IN') {
       auth.setAuth(true)
       if (router.currentRoute.value.path === '/login')
-        router.push('/dashboard')
+        router.push('/home')
     } else if (event === 'SIGNED_OUT'){
       auth.setAuth(false)
       router.push('/login')
