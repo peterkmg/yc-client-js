@@ -1,23 +1,22 @@
 <template>
-  <el-container class="login-container">
+  <el-container class="login-container no-select">
     <el-header />
     <el-main>
       <el-form
-        :model="formData"
-        class="login-form"
+        :model="form"
+        class="login-form no-select"
         autocomplete="on"
         label-position="left"
       >
-        <div class="title-container">
-          <h3 class="title">
+        <div class="title-container no-select">
+          <h3 class="title no-select">
             Login Form
           </h3>
 
           <el-form-item prop="username">
-            <Icon :icon="formData.usernameBoxIcon"
-              style="margin-left: 12px;" />
+            <Icon :icon="form.usernameBoxIcon" style="margin-left: 12px" />
             <el-input
-              v-model="formData.email"
+              v-model="form.email"
               placeholder="почта"
               name="email"
               type="text"
@@ -27,28 +26,34 @@
           </el-form-item>
 
           <el-tooltip
-            v-model="formData.capsTooltip"
+            v-model="form.capsTooltip"
             content="Caps lock is On"
             placement="right"
             manual
           >
             <el-form-item prop="password">
-              <Icon :icon="formData.passwordBoxIcon"
-                style="margin-left: 12px;" />
+              <Icon :icon="form.passwordBoxIcon" style="margin-left: 12px" />
               <el-input
-                v-model="formData.password"
-                :type="formData.passwordBoxType"
+                v-model="form.password"
+                :type="form.passwordIsText ? 'text' : 'password'"
                 placeholder="пароль"
                 name="password"
                 tabindex="2"
                 autocomplete="on"
               />
-              <Icon :icon="formData.passwordBoxSideIcon" @click="togglePasswordBoxType" />
+              <Icon
+                :icon="
+                  form.passwordIsText
+                    ? form.passwordBoxSideIconText
+                    : form.passwordBoxSideIconPassword
+                "
+                @click="togglePasswordBoxType"
+              />
             </el-form-item>
           </el-tooltip>
 
           <el-button
-            :loading="formData.loading"
+            :loading="form.loading"
             type="primary"
             style="width: 100%; margin-bottom: 30px"
             @click="signIn"
@@ -63,37 +68,31 @@
 </template>
 
 <script lang="ts" setup>
-import useAuthStore from '@/store/auth'
 import { ElMessage } from 'element-plus/es'
+import useAuthStore from '@/store/auth'
 
-const formData = reactive({
+const form = reactive({
   email: '',
   password: '',
-  passwordBoxType: 'password',
-  passwordBoxIcon: 'majesticons:lock-closed-line',
-  usernameBoxIcon: 'majesticons:user-line',
-  passwordBoxSideIcon: 'majesticons:eye-line',
+  usernameBoxIcon: 'uil:user',
+  passwordBoxIcon: 'uil:lock',
+  passwordBoxSideIconPassword: 'uil:eye',
+  passwordBoxSideIconText: 'uil:eye-slash',
+  passwordIsText: false,
   capsTooltip: false,
   loading: false,
 })
 
 const togglePasswordBoxType = () => {
-  if (formData.passwordBoxType === 'password'){
-    formData.passwordBoxType = 'text'
-    formData.passwordBoxSideIcon = 'majesticons:eye-off-line'
-  } else {
-    formData.passwordBoxType = 'password'
-    formData.passwordBoxSideIcon = 'majesticons:eye-line'
-  }
+  form.passwordIsText = !form.passwordIsText
 }
 
 const auth = useAuthStore()
 const signIn = async() => {
-  formData.loading = true
-  const error = await auth.signIn(formData.email, formData.password)
-  if (error)
-    ElMessage({ type: 'error', message: error.message })
-  formData.loading = false
+  form.loading = true
+  const error = await auth.signIn(form.email, form.password)
+  if (error) ElMessage({ type: 'error', message: error.message })
+  form.loading = false
 }
 </script>
 
@@ -133,7 +132,6 @@ const signIn = async() => {
     }
   }
 }
-
 
 .login-container {
   overflow: hidden;

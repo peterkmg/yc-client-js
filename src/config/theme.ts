@@ -24,6 +24,8 @@ export const themeVariables = {
 
   'sub-menu-bg-color': '#1f2d3d',
   'sub-menu-hover-color': '#001528',
+  'sidebar-open-width': '210px',
+  'sidebar-collapsed-width': '64px',
 }
 
 export const generateCSSVariables = () => {

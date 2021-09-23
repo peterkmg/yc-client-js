@@ -1,6 +1,6 @@
 <template>
   <el-container class="app-wrapper">
-    <el-aside>
+    <el-aside :class="{ collapsed: !app.sidebar }">
       <AsideContent />
     </el-aside>
 
@@ -19,20 +19,23 @@
 <script lang="ts" setup>
 import useAppStore from '@/store/app'
 
-const appStore = useAppStore()
+const app = useAppStore()
 </script>
 
 <style lang="scss" scoped>
-
 .app-wrapper {
   > .el-aside {
-    width: v-bind('appStore.getSidebarWidth');
+    width: $sidebar-open-width;
     background-color: $menu-bg-color;
     transition: width 0.28s;
+
+    &.collapsed {
+      width: $sidebar-collapsed-width;
+    }
   }
 
   > .main-container {
-    >.header {
+    > .header {
       height: 50px;
       padding: 0;
       box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);

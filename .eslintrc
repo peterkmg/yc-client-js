@@ -1,5 +1,5 @@
 {
-  "extends": ["@antfu", "vue-global-api"],
+  "extends": ["@antfu"],
   "rules": {
     "arrow-parens": [2, "always"]
   }

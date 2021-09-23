@@ -9,12 +9,4 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-
-</script>
-
-<route lang="yaml">
-meta:
-  nav: true
-  title: Dashboard
-</route>
+<script lang="ts" setup></script>

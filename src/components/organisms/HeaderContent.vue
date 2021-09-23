@@ -1,20 +1,30 @@
 <template>
   <div id="wrapper" class="no-select">
     <div class="hamburger header-item" @click="app.toggleSidebar">
-      <Icon :icon="app.isSidebarOpen ? 'octicon:sidebar-collapse-24' : 'octicon:sidebar-expand-24'"  style="transform: rotate(180deg);"/>
+      <Icon
+        :icon="app.isSidebarOpen ? icons.close : icons.open"
+        style="transform: rotate(180deg)"
+      />
     </div>
     <div class="right-menu">
-      <div class="header-item" style="display: flex; justify-content: space-around; width: 50px;">
-        <Icon icon="majesticons:arrows-expand-line" />
+      <div class="header-item" style="width: 50px">
+        <Icon :icon="icons.fullscreen" />
       </div>
-      <el-dropdown class="dropdown header-item" trigger="click" style="padding-left: 4px;">
-        <div style="display: flex; justify-content: space-evenly; height: 100%;">
-          <Icon v-if="auth.userdata.icon" :icon="auth.userdata.icon" style="width: 28px; margin-right: 4px;" />
+      <el-dropdown
+        class="header-item"
+        trigger="click"
+        style="padding-left: 4px"
+      >
+        <div style="display: flex; justify-content: space-evenly; height: 100%">
+          <Icon :icon="icons.user" style="width: 28px; margin-right: 4px" />
           <div style="align-self: center; pointer-events: none">
             <strong>{{ auth.userdata.username }}</strong>
           </div>
-          <div style="align-self: end;">
-            <Icon icon="majesticons:chevron-down" style="width: 16px; height: 16px; margin-right: 4px;"/>
+          <div style="align-self: end">
+            <Icon
+              :icon="icons.down"
+              style="width: 16px; height: 16px; margin-right: 4px"
+            />
           </div>
         </div>
 
@@ -23,7 +33,9 @@
             <router-link to="/profile">
               <el-dropdown-item>Профиль</el-dropdown-item>
             </router-link>
-            <el-dropdown-item divided @click="signOut">Выйти</el-dropdown-item>
+            <el-dropdown-item divided @click="signOut">
+              Выйти
+            </el-dropdown-item>
           </el-dropdown-menu>
         </template>
       </el-dropdown>
@@ -32,17 +44,24 @@
 </template>
 
 <script lang="ts" setup>
+import { ElMessage } from 'element-plus/es'
 import useAppStore from '@/store/app'
 import useAuthStore from '@/store/auth'
-import { ElMessage } from 'element-plus/es'
 
 const auth = useAuthStore()
 const app = useAppStore()
 
-const signOut = async () => {
+const icons = reactive({
+  close: 'octicon:sidebar-collapse-24',
+  open: 'octicon:sidebar-expand-24',
+  fullscreen: 'majesticons:arrows-expand-line',
+  user: 'uil:user-circle',
+  down: 'majesticons:chevron-down',
+})
+
+const signOut = async() => {
   const error = await auth.signOut()
-  if (error)
-    ElMessage({ type: 'error', message: error.message})
+  if (error) ElMessage({ type: 'error', message: error.message })
 }
 </script>
 
@@ -66,15 +85,14 @@ const signOut = async () => {
   display: flex;
   justify-content: space-between;
   height: 100%;
-  >.hamburger {
+  > .hamburger {
     display: flex;
     justify-content: space-around;
     width: 50px;
   }
-  >.right-menu {
+  > .right-menu {
     display: flex;
     justify-content: space-evenly;
   }
 }
-
 </style>
