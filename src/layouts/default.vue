@@ -24,6 +24,7 @@ const app = useAppStore()
 
 <style lang="scss" scoped>
 .app-wrapper {
+  height: 100%;
   > .el-aside {
     width: $sidebar-open-width;
     background-color: $menu-bg-color;

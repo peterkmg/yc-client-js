@@ -29,7 +29,7 @@
         show-summary
         height="100%"
       >
-        <el-table-column label="#" type="index" style="width: 10%" />
+        <el-table-column label="#" type="index" />
         <el-table-column prop="full_name" sortable label="Наименование" />
         <el-table-column prop="short_name" sortable label="Сокращение" />
         <el-table-column label="Действия" align="right" width="240">

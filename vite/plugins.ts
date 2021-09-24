@@ -12,10 +12,10 @@ export default () => {
     Pages({
       pagesDir: 'src/views',
       extendRoute(route) {
-        if (route.path === '/login')
-          return route
-        return { ...route, meta: { requiresAuth: true } }
-      }
+        return route.path === '/login'
+          ? route
+          : { ...route, meta: { requiresAuth: true } }
+      },
     }),
     Layouts(),
     AutoImport({
@@ -30,7 +30,7 @@ export default () => {
         // presets
         'vue',
         'vue-router',
-      ]
+      ],
     }),
     Components({
       dts: true,
@@ -38,6 +38,6 @@ export default () => {
         ElementPlusResolver({ importStyle: true }),
         IconifyVueResolver(),
       ],
-    })
+    }),
   ]
 }

@@ -1,5 +1,7 @@
 <template>
-  <router-view />
+  <el-config-provider :locale="app.locale">
+    <router-view />
+  </el-config-provider>
 </template>
 
 <script lang="ts" setup>
@@ -37,7 +39,3 @@ supabase.auth.onAuthStateChange(async(event, session) => {
   }
 })
 </script>
-
-<style lang="scss">
-@import '@/styles/index.scss';
-</style>

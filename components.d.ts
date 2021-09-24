@@ -4,19 +4,16 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AsideContent: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/organisms/AsideContent.vue')['default']
-    AsideMenuItem: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/molecules/AsideMenuItem.vue')['default']
-    Breadcrumb: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/molecules/Breadcrumb.vue')['default']
+    AsideContent: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/AsideContent.vue')['default']
+    AsideMenuItem: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/AsideMenuItem.vue')['default']
+    Breadcrumb: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/Breadcrumb.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
-    ElCheckbox: typeof import('element-plus/es')['ElCheckbox']
+    ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElDropdown: typeof import('element-plus/es')['ElDropdown']
     ElDropdownItem: typeof import('element-plus/es')['ElDropdownItem']
     ElDropdownMenu: typeof import('element-plus/es')['ElDropdownMenu']
-    ElFooter: typeof import('element-plus/es')['ElFooter']
-    ElForm: typeof import('element-plus/es')['ElForm']
-    ElFormItem: typeof import('element-plus/es')['ElFormItem']
     ElHeader: typeof import('element-plus/es')['ElHeader']
     ElInput: typeof import('element-plus/es')['ElInput']
     ElMain: typeof import('element-plus/es')['ElMain']
@@ -26,8 +23,7 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
-    ElTooltip: typeof import('element-plus/es')['ElTooltip']
-    HeaderContent: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/organisms/HeaderContent.vue')['default']
+    HeaderContent: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/HeaderContent.vue')['default']
     Icon: typeof import('@iconify/vue')['Icon']
   }
 }
