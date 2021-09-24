@@ -1,6 +1,6 @@
 <template>
-  <el-container class="header-container">
-    <div class="header-item">
+  <el-header class="main-header flex-between">
+    <div class="as-center">
       <el-button
         size="small"
         type="primary"
@@ -10,7 +10,7 @@
         Добавить
       </el-button>
     </div>
-    <div class="header-item">
+    <div class="as-center">
       <el-input
         v-model="table.search"
         size="small"
@@ -18,10 +18,10 @@
         placeholder="поиск"
       />
     </div>
-  </el-container>
-  <el-container class="main-container">
-    <div class="app-main" style="height: 100%">
-      <el-table size="small" :data="table.data.paged">
+  </el-header>
+  <el-main class="main-body">
+    <el-table class="data-table" size="small" :data="table.data.paged">
+      <el-scrollbar>
         <el-table-column label="#" align="center">
           <template #default="scope">
             {{ scope.$index }}
@@ -45,20 +45,22 @@
             </el-button>
           </template>
         </el-table-column>
-      </el-table>
-      <el-pagination
-        layout="sizes, prev, pager, next, jumper"
-        :default-current-page="table.pagination.page"
-        :current-page="table.pagination.page"
-        :page-size="table.pagination.size"
-        :page-sizes="table.pagination.sizes"
-        :total="table.pagination.total"
-        hide-on-single-page
-        @update:page-size="table.pagination.setPageSize"
-        @update:current-page="table.pagination.setPage"
-      />
-    </div>
-  </el-container>
+      </el-scrollbar>
+    </el-table>
+  </el-main>
+  <el-footer class="main-footer">
+    <el-pagination
+      layout="sizes, prev, pager, next, jumper"
+      :default-current-page="table.pagination.page"
+      :current-page="table.pagination.page"
+      :page-size="table.pagination.size"
+      :page-sizes="table.pagination.sizes"
+      :total="table.pagination.total"
+      hide-on-single-page
+      @update:page-size="table.pagination.setPageSize"
+      @update:current-page="table.pagination.setPage"
+    />
+  </el-footer>
 </template>
 
 <script lang="ts" setup>
@@ -116,15 +118,22 @@ onMounted(getData)
 </script>
 
 <style lang="scss" scoped>
-$header-height: 64px;
-$main-height: calc(100% - $header-height);
-.header-container {
-  height: $header-height;
+.main-header {
+  height: $main-header-height;
+  padding: 0 16px;
 }
-.main-container {
-  height: $main-height;
+.main-body {
+  max-height: $main-body-height;
+  padding: 16px;
 }
-
+.main-footer {
+  height: $main-footer-height;
+  margin: none;
+  padding: 0 16px;
+}
+.data-table {
+  max-height: calc($main-body-height - 32px);
+}
 :deep(.el-pagination) {
   display: flex;
   justify-content: space-evenly;

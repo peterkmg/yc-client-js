@@ -26,6 +26,13 @@ export const themeVariables = {
   'sub-menu-hover-color': '#001528',
   'sidebar-open-width': '210px',
   'sidebar-collapsed-width': '64px',
+
+  'app-header-height': '50px',
+  'app-main-height': 'calc(100vh - $app-header-height)',
+  'main-header-height': '60px',
+  'main-footer-height': '60px',
+  'main-body-height':
+    'calc($app-main-height - $main-header-height - $main-footer-height)',
 }
 
 export const generateCSSVariables = () => {

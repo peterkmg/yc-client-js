@@ -7,22 +7,26 @@
   -webkit-touch-callout: none;
 }
 
-.header-container {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  padding: 16px;
-
-  > .header-item {
-    align-self: center;
-  }
-}
-
-.app-main {
-  width: 100%;
-  padding: 4px 16px;
-}
-
 .flex {
   display: flex;
+}
+.flex-evenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+}
+.flex-around {
+  display: flex;
+  justify-content: space-around;
+}
+.flex-center {
+  display: flex;
+  justify-content: center;
+}
+
+.as-center {
+  align-self: center;
 }
