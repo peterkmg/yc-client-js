@@ -22,7 +22,6 @@ specifiers:
   sass: ^1.42.1
   stylelint: ^13.13.1
   typescript: ^4.4.3
-  unique-names-generator: ^4.6.0
   unplugin-auto-import: ^0.4.6
   unplugin-vue-components: ^0.15.3
   vee-validate: ^4.4.11
@@ -42,7 +41,6 @@ dependencies:
   element-plus: 1.1.0-beta.15_vue@3.2.16
   nprogress: 0.2.0
   pinia: 2.0.0-rc.9_typescript@4.4.3+vue@3.2.16
-  unique-names-generator: 4.6.0
   vee-validate: 4.4.11_vue@3.2.16
   vue: 3.2.16
   vue-router: 4.0.11_vue@3.2.16
@@ -4521,11 +4519,6 @@ packages:
       trough: 1.0.5
       vfile: 4.2.1
     dev: true
-
-  /unique-names-generator/4.6.0:
-    resolution: {integrity: sha512-m0fke1emBeT96UYn2psPQYwljooDWRTKt9oUZ5vlt88ZFMBGxqwPyLHXwCfkbgdm8jzioCp7oIpo6KdM+fnUlQ==}
-    engines: {node: '>=8'}
-    dev: false
 
   /unist-util-find-all-after/3.0.2:
     resolution: {integrity: sha512-xaTC/AGZ0rIM2gM28YVRAFPIZpzbpDtU3dRmp7EXlNVA8ziQc4hY3H7BHXM1J49nEmiqc3svnqMReW+PGqbZKQ==}
