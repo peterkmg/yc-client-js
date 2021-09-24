@@ -17,7 +17,7 @@ export interface AppState {
 
 export default defineStore({
   id: 'app',
-  state: (): AppState => ({
+  state: () => ({
     path: '',
     title: APP_NAME,
     locale: ru,
