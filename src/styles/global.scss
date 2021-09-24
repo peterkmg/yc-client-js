@@ -28,11 +28,22 @@ body {
   -webkit-touch-callout: none;
 }
 
-.app-header {
+.header-container {
   display: flex;
+  justify-content: space-between;
   width: 100%;
+  padding: 16px;
+
+  > .header-item {
+    align-self: center;
+  }
 }
 
 .app-main {
   width: 100%;
+  padding: 4px 16px;
+}
+
+.flex {
+  display: flex;
 }

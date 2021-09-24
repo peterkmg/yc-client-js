@@ -2,13 +2,13 @@
   <el-scrollbar>
     <el-menu
       :default-active="app.path"
-      :collapse="!app.isSidebarOpen"
+      :collapse="!app.sidebar"
       :unique-opened="false"
       :collapse-transition="false"
       :router="true"
     >
       <AsideMenuItem
-        v-for="item in app.getMenuItems"
+        v-for="item in app.menuItems"
         :key="item.title"
         :item="item"
       />

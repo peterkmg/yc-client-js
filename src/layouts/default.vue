@@ -4,12 +4,12 @@
       <AsideContent />
     </el-aside>
 
-    <el-container class="main-container">
+    <el-container>
       <el-header class="header">
         <HeaderContent />
       </el-header>
 
-      <el-main>
+      <el-main style="padding: 0">
         <router-view />
       </el-main>
     </el-container>
@@ -34,12 +34,10 @@ const app = useAppStore()
     }
   }
 
-  > .main-container {
-    > .header {
-      height: 50px;
-      padding: 0;
-      box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
-    }
+  .header {
+    height: 50px;
+    padding: 0;
+    box-shadow: 0 1px 4px rgba(0, 21, 41, 0.08);
   }
 }
 </style>

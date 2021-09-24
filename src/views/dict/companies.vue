@@ -1,45 +1,56 @@
 <template>
-  <div class="app-header">
-    <el-button
-      type="primary"
-      icon="el-icon-plus"
-      :loading="table.loading"
-      @click="filldb"
-    >
-      Добавить организацию
-    </el-button>
-    <el-checkbox
-      v-model="table.allowDelete"
-      label="Разрешить удаление"
-      border
-    />
-  </div>
-
-  <div class="app-main">
-    <el-scrollbar>
-      <el-table :fit="true" :loading="table.loading" :data="table.data">
-        <el-table-column label="Действия" class="buttons-column">
+  <el-container class="header-container">
+    <div class="header-item">
+      <el-button
+        size="small"
+        type="primary"
+        icon="el-icon-plus"
+        :loading="table.loading"
+        @click="filldb"
+      >
+        Добавить
+      </el-button>
+    </div>
+    <div class="header-item">
+      <el-input
+        v-model="table.search"
+        size="small"
+        style="width: 400px"
+        placeholder="поиск"
+      />
+    </div>
+  </el-container>
+  <el-container class="main-container">
+    <div class="app-main" style="height: 100%">
+      <el-table
+        size="small"
+        :data="table.data"
+        :loading="table.loading"
+        show-summary
+        height="100%"
+      >
+        <el-table-column label="#" type="index" style="width: 10%" />
+        <el-table-column prop="full_name" sortable label="Наименование" />
+        <el-table-column prop="short_name" sortable label="Сокращение" />
+        <el-table-column label="Действия" align="right" width="240">
           <template #default="scope">
-            <el-button size="mini" icon="el-icon-edit" />
+            <el-button size="mini" icon="el-icon-edit">
+              Изменить
+            </el-button>
             <el-button
-              v-if="table.allowDelete"
+              v-if="app.allowEdit"
               size="mini"
               type="danger"
               icon="el-icon-delete"
               @click.prevent="deleteRow(scope.$index)"
-            />
+            >
+              Удалить
+            </el-button>
           </template>
         </el-table-column>
-        <el-table-column label="#" class="buttons-column">
-          <template #default="scope">
-            {{ scope.$index + 1 }}
-          </template>
-        </el-table-column>
-        <el-table-column prop="full_name" sortable label="Наименование" />
-        <el-table-column prop="short_name" sortable label="Сокращение" />
       </el-table>
-    </el-scrollbar>
-  </div>
+    </div>
+  </el-container>
 </template>
 
 <script lang="ts" setup>
@@ -51,6 +62,9 @@ import {
   animals,
 } from 'unique-names-generator'
 import db from '@/database'
+import useAppStore from '@/store/app'
+
+const app = useAppStore()
 
 interface Company {
   id: number
@@ -66,7 +80,7 @@ interface CompanyLight {
 const table = reactive({
   data: [] as Company[],
   loading: false,
-  allowDelete: false,
+  search: '',
 })
 
 const getData = async() => {
@@ -108,8 +122,8 @@ const filldb = async() => {
     }
     temp.push(t)
   }
-  console.log(JSON.stringify(temp))
-  const { data, error } = await db.from('dict_company').insert(temp)
+
+  const { error } = await db.from('dict_company').insert(temp)
   if (error) ElMessage({ type: 'error', message: error.message })
   table.loading = false
 }
@@ -118,7 +132,12 @@ onMounted(getData)
 </script>
 
 <style lang="scss" scoped>
-:deep(.el-table__row > .el-table__cell) {
-  justify-content: center;
+$header-height: 64px;
+$main-height: calc(100% - $header-height);
+.header-container {
+  height: $header-height;
+}
+.main-container {
+  height: $main-height;
 }
 </style>

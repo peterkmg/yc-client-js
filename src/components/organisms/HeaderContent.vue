@@ -1,21 +1,38 @@
 <template>
-  <div id="wrapper" class="no-select">
-    <div class="hamburger header-item" @click="app.toggleSidebar">
+  <div
+    class="flex no-select"
+    style="justify-content: space-between; height: 100%"
+  >
+    <div
+      class="header-item flex"
+      style="justify-content: center; width: 50px"
+      @click="app.toggleSidebar"
+    >
       <Icon
-        :icon="app.isSidebarOpen ? icons.close : icons.open"
+        :icon="app.sidebar ? icons.close : icons.open"
         style="transform: rotate(180deg)"
       />
     </div>
-    <div class="right-menu">
-      <div class="header-item" style="width: 50px">
+    <div class="flex" style="justify-content: space-evenly">
+      <div
+        class="header-item flex"
+        style="justify-content: center; width: 40px"
+      >
         <Icon :icon="icons.fullscreen" />
       </div>
+      <div
+        class="header-item flex"
+        style="justify-content: center; width: 40px"
+        @click="app.toggleEditMode"
+      >
+        <Icon :icon="app.allowEdit ? icons.unlock : icons.lock" />
+      </div>
       <el-dropdown
-        class="header-item"
+        class="header-item flex"
         trigger="click"
         style="padding-left: 4px"
       >
-        <div style="display: flex; justify-content: space-evenly; height: 100%">
+        <div class="flex" style="justify-content: space-evenly; height: 100%">
           <Icon :icon="icons.user" style="width: 28px; margin-right: 4px" />
           <div style="align-self: center; pointer-events: none">
             <strong>{{ auth.userdata.username }}</strong>
@@ -54,6 +71,8 @@ const app = useAppStore()
 const icons = reactive({
   close: 'octicon:sidebar-collapse-24',
   open: 'octicon:sidebar-expand-24',
+  lock: 'uil:lock-alt',
+  unlock: 'uil:lock-open-alt',
   fullscreen: 'majesticons:arrows-expand-line',
   user: 'uil:user-circle',
   down: 'majesticons:chevron-down',
@@ -78,21 +97,6 @@ const signOut = async() => {
 
   &:hover {
     background: rgba(0, 0, 0, 0.03);
-  }
-}
-
-#wrapper {
-  display: flex;
-  justify-content: space-between;
-  height: 100%;
-  > .hamburger {
-    display: flex;
-    justify-content: space-around;
-    width: 50px;
-  }
-  > .right-menu {
-    display: flex;
-    justify-content: space-evenly;
   }
 }
 </style>

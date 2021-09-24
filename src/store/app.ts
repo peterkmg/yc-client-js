@@ -7,6 +7,7 @@ export interface AppState {
   path: string
   title: string
   sidebar: boolean
+  allowEdit: boolean
   menuItems: MenuMapItem[]
 }
 
@@ -16,19 +17,15 @@ export default defineStore({
     path: '',
     title: APP_NAME,
     sidebar: true,
+    allowEdit: false,
     menuItems,
   }),
-  getters: {
-    isSidebarOpen: (state): boolean => {
-      return state.sidebar
-    },
-    getMenuItems: (state): MenuMapItem[] => {
-      return state.menuItems
-    },
-  },
   actions: {
     toggleSidebar() {
       this.sidebar = !this.sidebar
+    },
+    toggleEditMode() {
+      this.allowEdit = !this.allowEdit
     },
     changePage(path: string) {
       const page = this.menuItems.find((i) => i.index === path)

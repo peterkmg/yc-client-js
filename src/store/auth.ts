@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia'
-import supabase from '@/database'
 import type { User, Session } from '@supabase/supabase-js'
+import db from '@/database'
 
 export interface AuthState {
   user: User | null
@@ -15,26 +15,32 @@ export interface AuthState {
 export default defineStore({
   id: 'auth',
   state: (): AuthState => ({
-    user: supabase.auth.session()?.user ?? supabase.auth.user(),
-    session: supabase.auth.session(),
+    user: db.auth.session()?.user ?? db.auth.user(),
+    session: db.auth.session(),
     userdata: {
       username: 'User',
-      icon: 'ci:user-circle'
+      icon: 'ci:user-circle',
     },
-    isAuthenticated: false
+    isAuthenticated: false,
   }),
   getters: {},
   actions: {
-    setUser(user: User | null) { this.user = user },
-    setSession(session: Session | null) { this.session = session },
-    setAuth(flag: boolean) { this.isAuthenticated = flag },
+    setUser(user: User | null) {
+      this.user = user
+    },
+    setSession(session: Session | null) {
+      this.session = session
+    },
+    setAuth(flag: boolean) {
+      this.isAuthenticated = flag
+    },
     async signIn(email: string, password: string): Promise<Error | null> {
-      const { error } = await supabase.auth.signIn({ email, password })
+      const { error } = await db.auth.signIn({ email, password })
       return error ?? null
     },
-    async signOut(): Promise<Error| null> {
-      const { error } = await supabase.auth.signOut()
+    async signOut(): Promise<Error | null> {
+      const { error } = await db.auth.signOut()
       return error ?? null
-    }
+    },
   },
 })
