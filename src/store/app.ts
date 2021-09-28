@@ -1,6 +1,4 @@
 import { defineStore } from 'pinia'
-import en from 'element-plus/packages/locale/es/lang/en'
-import ru from '@/config/element-locale'
 import type { MenuMapItem } from '@/config/menuMap'
 import menuItems from '@/config/menuMap'
 import { APP_NAME } from '@/config/constants'
@@ -9,8 +7,6 @@ export interface AppState {
   path: string
   title: string
   sidebar: boolean
-  locale: typeof en
-  locales: typeof en[]
   allowEdit: boolean
   menuItems: MenuMapItem[]
 }
@@ -20,8 +16,6 @@ export default defineStore({
   state: () => ({
     path: '',
     title: APP_NAME,
-    locale: ru,
-    locales: [en, ru],
     sidebar: true,
     allowEdit: false,
     menuItems,

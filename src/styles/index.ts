@@ -1,13 +1,13 @@
 import type { App } from 'vue'
-import type { InstallOptions } from 'element-plus/lib/utils/config'
+import { message } from 'ant-design-vue'
 
-import './default.scss'
-import './global.scss'
-import './vendor.scss'
+import 'modern-normalize/modern-normalize.css'
+import 'nprogress/nprogress.css'
+import 'virtual:windi.css'
+import './vendor/antdv.less'
+
+import './classes.less'
 
 export default (app: App) => {
-  app.config.globalProperties.$ELEMENT = {
-    size: 'medium',
-    zIndex: 3000,
-  } as InstallOptions
+  app.config.globalProperties.$message = message
 }

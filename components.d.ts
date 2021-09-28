@@ -4,6 +4,16 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    ACard: typeof import('ant-design-vue/es')['Card']
+    AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
+    AForm: typeof import('ant-design-vue/es')['Form']
+    AFormItem: typeof import('ant-design-vue/es')['FormItem']
+    AInput: typeof import('ant-design-vue/es')['Input']
+    ALayout: typeof import('ant-design-vue/es')['Layout']
+    ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
+    ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
+    ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
+    ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
     AsideContent: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/AsideContent.vue')['default']
     AsideMenuItem: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/AsideMenuItem.vue')['default']
     Breadcrumb: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/Breadcrumb.vue')['default']

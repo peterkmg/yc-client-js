@@ -1,9 +1,10 @@
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import Components from 'unplugin-vue-components/vite'
 import AutoImport from 'unplugin-auto-import/vite'
+import WindiCSS from 'vite-plugin-windicss'
 import { IconifyVueResolver } from './resolvers'
 
 export default () => {
@@ -35,9 +36,10 @@ export default () => {
     Components({
       dts: true,
       resolvers: [
-        ElementPlusResolver({ importStyle: true }),
+        AntDesignVueResolver({ importStyle: 'less', resolveIcons: true }),
         IconifyVueResolver(),
       ],
     }),
+    WindiCSS(),
   ]
 }

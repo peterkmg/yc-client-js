@@ -67,7 +67,6 @@
 import type { CompanyEntry } from '@/api/company'
 import useAppStore from '@/store/app'
 import api from '@/api'
-import message from '@/utils/message'
 
 const app = useAppStore()
 
@@ -101,46 +100,14 @@ const table = reactive({
 const getData = async() => {
   table.loading.start()
   const res = await api.company.getAll(table.name)
-  if (res.error) message.error(res.error)
-  else table.data.raw = res.data ?? []
   table.loading.finish()
 }
 
 const deleteRow = async(index: number) => {
   table.loading.start()
   const error = await api.company.deleteSingle(table.name, index)
-  if (error) message.error(error)
-  else table.data.raw.splice(index, 1)
   table.loading.finish()
 }
 
 onMounted(getData)
 </script>
-
-<style lang="scss" scoped>
-.main-header {
-  height: $main-header-height;
-  padding: 0 16px;
-}
-.main-body {
-  max-height: $main-body-height;
-  padding: 16px;
-}
-.main-footer {
-  height: $main-footer-height;
-  margin: none;
-  padding: 0 16px;
-}
-.data-table {
-  max-height: calc($main-body-height - 32px);
-}
-:deep(.el-pagination) {
-  display: flex;
-  justify-content: space-evenly;
-  margin: 10px 0 0;
-
-  .select-trigger > .el-input {
-    width: 150px;
-  }
-}
-</style>

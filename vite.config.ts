@@ -1,31 +1,34 @@
 import { resolve } from 'path'
-import { defineConfig } from 'vite'
-import { generateCSSVariables } from './src/config/theme'
+import type { UserConfig, UserConfigExport, ConfigEnv } from 'vite'
 import getPluginsConfig from './vite/plugins'
 
-export default defineConfig({
-  resolve: {
-    alias: [
-      {
-        find: '@',
-        replacement: resolve(__dirname, './src'),
-      },
-    ],
-  },
-  server: {
-    fs: {
-      strict: true,
+export default ({ command, mode }: ConfigEnv): UserConfigExport => {
+  return {
+    resolve: {
+      alias: [
+        {
+          find: '@',
+          replacement: resolve(__dirname, './src'),
+        },
+      ],
     },
-  },
-  optimizeDeps: {
-    include: ['vue', 'pinia', 'vue-router', '@iconify/vue'],
-  },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: generateCSSVariables(),
+    server: {
+      host: false,
+      fs: {
+        strict: true,
       },
     },
-  },
-  plugins: getPluginsConfig(),
-})
+    optimizeDeps: {
+      include: ['@iconify/vue'],
+      exclude: ['vue-demi'],
+    },
+    css: {
+      preprocessorOptions: {
+        less: {
+          javascriptEnabled: true,
+        },
+      },
+    },
+    plugins: getPluginsConfig(),
+  } as UserConfig
+}

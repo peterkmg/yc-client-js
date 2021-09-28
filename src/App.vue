@@ -1,10 +1,11 @@
 <template>
-  <el-config-provider :locale="app.locale">
+  <a-config-provider :locale="ru">
     <router-view />
-  </el-config-provider>
+  </a-config-provider>
 </template>
 
 <script lang="ts" setup>
+import ru from 'ant-design-vue/es/locale/ru_RU'
 import { useRouter } from 'vue-router'
 import { addCollection } from '@iconify/vue'
 import localIcons from '@/assets/svg'
