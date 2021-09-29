@@ -1,6 +1,7 @@
 import { resolve } from 'path'
 import type { UserConfig, UserConfigExport, ConfigEnv } from 'vite'
 import getPluginsConfig from './vite/plugins'
+import theme from './src/styles/theme'
 
 export default ({ command, mode }: ConfigEnv): UserConfigExport => {
   return {
@@ -25,6 +26,7 @@ export default ({ command, mode }: ConfigEnv): UserConfigExport => {
     css: {
       preprocessorOptions: {
         less: {
+          modifyVars: theme,
           javascriptEnabled: true,
         },
       },

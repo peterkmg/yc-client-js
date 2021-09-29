@@ -4,6 +4,7 @@ import { message } from 'ant-design-vue'
 import 'modern-normalize/modern-normalize.css'
 import 'nprogress/nprogress.css'
 import 'virtual:windi.css'
+import 'ant-design-vue/es/message/style/index.less'
 import './vendor/antdv.less'
 
 import './classes.less'

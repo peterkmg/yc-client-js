@@ -4,19 +4,21 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
+    AButton: typeof import('ant-design-vue/es')['Button']
     ACard: typeof import('ant-design-vue/es')['Card']
     AConfigProvider: typeof import('ant-design-vue/es')['ConfigProvider']
     AForm: typeof import('ant-design-vue/es')['Form']
     AFormItem: typeof import('ant-design-vue/es')['FormItem']
     AInput: typeof import('ant-design-vue/es')['Input']
+    AInputPassword: typeof import('ant-design-vue/es')['InputPassword']
     ALayout: typeof import('ant-design-vue/es')['Layout']
     ALayoutContent: typeof import('ant-design-vue/es')['LayoutContent']
     ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
-    AsideContent: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/AsideContent.vue')['default']
-    AsideMenuItem: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/AsideMenuItem.vue')['default']
-    Breadcrumb: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/Breadcrumb.vue')['default']
+    AsideContent: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/organisms/AsideContent.vue')['default']
+    AsideMenuItem: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/molecules/AsideMenuItem.vue')['default']
+    Breadcrumb: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/molecules/Breadcrumb.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
@@ -35,7 +37,7 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
-    HeaderContent: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/HeaderContent.vue')['default']
+    HeaderContent: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/organisms/HeaderContent.vue')['default']
     Icon: typeof import('@iconify/vue')['Icon']
   }
 }

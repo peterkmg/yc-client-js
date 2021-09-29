@@ -34,13 +34,13 @@ export default defineStore({
     setAuth(flag: boolean) {
       this.isAuthenticated = flag
     },
-    async signIn(email: string, password: string): Promise<Error | null> {
+    async signIn(email: string, password: string): Promise<string | undefined> {
       const { error } = await db.auth.signIn({ email, password })
-      return error ?? null
+      return error?.message
     },
-    async signOut(): Promise<Error | null> {
+    async signOut(): Promise<string | undefined> {
       const { error } = await db.auth.signOut()
-      return error ?? null
+      return error?.message
     },
   },
 })

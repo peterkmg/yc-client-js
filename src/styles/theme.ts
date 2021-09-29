@@ -1,3 +1,10 @@
-import { getThemeVariables } from 'ant-design-vue/dist/theme'
+export default {
+  'blue-base': '#409eff',
+  'gold-base': '#e6a23c',
+  'green-base': '#67c23a',
+  'red-base': '#f56c6c',
+  'error-color': '#f56c6c',
+  'highlight-color': '#f56c6c',
 
-const theme = getThemeVariables()
+  'border-radius-base': '6px',
+}
