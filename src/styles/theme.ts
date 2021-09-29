@@ -6,5 +6,7 @@ export default {
   'error-color': '#f56c6c',
   'highlight-color': '#f56c6c',
 
+  'dark-grey': '#313a46',
+
   'border-radius-base': '6px',
 }

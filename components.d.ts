@@ -16,9 +16,10 @@ declare module 'vue' {
     ALayoutFooter: typeof import('ant-design-vue/es')['LayoutFooter']
     ALayoutHeader: typeof import('ant-design-vue/es')['LayoutHeader']
     ALayoutSider: typeof import('ant-design-vue/es')['LayoutSider']
-    AsideContent: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/organisms/AsideContent.vue')['default']
-    AsideMenuItem: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/molecules/AsideMenuItem.vue')['default']
-    Breadcrumb: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/molecules/Breadcrumb.vue')['default']
+    AMenu: typeof import('ant-design-vue/es')['Menu']
+    AsideContent: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/AsideContent.vue')['default']
+    AsideMenuItem: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/AsideMenuItem.vue')['default']
+    Breadcrumb: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/Breadcrumb.vue')['default']
     ElAside: typeof import('element-plus/es')['ElAside']
     ElButton: typeof import('element-plus/es')['ElButton']
     ElConfigProvider: typeof import('element-plus/es')['ElConfigProvider']
@@ -37,8 +38,10 @@ declare module 'vue' {
     ElSubMenu: typeof import('element-plus/es')['ElSubMenu']
     ElTable: typeof import('element-plus/es')['ElTable']
     ElTableColumn: typeof import('element-plus/es')['ElTableColumn']
-    HeaderContent: typeof import('C:/Users/etherform/Documents/src/yc-client/src/components/organisms/HeaderContent.vue')['default']
+    HeaderContent: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/HeaderContent.vue')['default']
     Icon: typeof import('@iconify/vue')['Icon']
+    SidebarMenu: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/organisms/SidebarMenu.vue')['default']
+    SidebarMenuItem: typeof import('C:/Users/trbpk/Documents/src/yc-client-js/src/components/molecules/SidebarMenuItem.vue')['default']
   }
 }
 

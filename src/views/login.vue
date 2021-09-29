@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import { message } from 'ant-design-vue'
+import { message } from 'ant-design-vue/es'
 import useAuthStore from '@/store/auth'
 
 const f = reactive({

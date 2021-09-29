@@ -10,7 +10,11 @@ export default (router: Router) => {
     nprogress.start()
 
     const auth = useAuthStore()
-    /* console.log(JSON.stringify(router.getRoutes())) */
+
+    const routes = router.getRoutes()
+    console.log('RAW Routes')
+    console.log(JSON.stringify(routes))
+    const processedRoutes = routes.find((r) => r.path)
     if (to.meta.requiresAuth && auth.isAuthenticated === false)
       next({ path: '/login' })
     else if (to.path === '/login' && auth.isAuthenticated === true)
