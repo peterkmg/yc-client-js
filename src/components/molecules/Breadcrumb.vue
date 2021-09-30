@@ -12,20 +12,6 @@
   </el-breadcrumb>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts" setup></script>
 
-</script>
-
-<style lang="scss" scoped>
-  .app-breadcrumb.el-breadcrumb {
-    display: inline-block;
-    margin-left: 8px;
-    font-size: 14px;
-    line-height: 50px;
-
-    .no-redirect {
-      color: #97a8be;
-      cursor: text;
-    }
-  }
-</style>
+<style lang="less" scoped></style>

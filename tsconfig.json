@@ -18,14 +18,10 @@
     "sourceMap": true,
     "resolveJsonModule": true,
     "removeComments": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "baseUrl": ".",
     "lib": ["esnext", "dom"],
-    "types": [
-      "vite/client",
-      "vite-plugin-pages/client",
-      "vite-plugin-vue-layouts/client"
-    ],
+    "types": ["vite/client"],
     "typeRoots": ["node_modules/@types", "typings"],
 
     "paths": {

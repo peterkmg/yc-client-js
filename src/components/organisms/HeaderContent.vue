@@ -84,19 +84,4 @@ const signOut = async() => {
 }
 </script>
 
-<style lang="scss" scoped>
-.iconify {
-  width: 24px;
-  height: 100%;
-}
-
-:deep(.header-item) {
-  height: 100%;
-  color: var(--el-text-color-regular);
-  cursor: pointer;
-
-  &:hover {
-    background: rgba(0, 0, 0, 0.03);
-  }
-}
-</style>
+<style lang="less" scoped></style>
