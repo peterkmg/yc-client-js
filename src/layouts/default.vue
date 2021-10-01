@@ -18,8 +18,4 @@ import useAppStore from '@/store/app'
 const app = useAppStore()
 </script>
 
-<style lang="less" scoped>
-.sidebar {
-  background: @dark-grey;
-}
-</style>
+<style lang="less" scoped></style>

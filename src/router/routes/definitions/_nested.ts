@@ -27,12 +27,13 @@ export default {
       {
         path: 'employees',
         redirect: redirect.home,
+        meta: { title: 'Сотрудники' },
         children: [
           {
             name: 'dict-employees-people',
             path: 'people',
             component: components.dict.employees.people,
-            meta: { title: 'Сотрудники' },
+            meta: { title: 'Физ. лица' },
           },
           {
             name: 'dict-employees-positions',

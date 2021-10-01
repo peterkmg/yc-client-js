@@ -82,9 +82,3 @@ const signIn = async() => {
   color: rgba(0, 0, 0, 0.65);
 }
 </style>
-
-<route lang="yaml">
-meta:
-  title: Login
-  layout: empty
-</route>

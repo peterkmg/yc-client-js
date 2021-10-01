@@ -1,9 +1,15 @@
 <template></template>
 
 <script lang="ts" setup>
-import type { MenuMapItem } from '@/config/menuMap'
+import type { MenuItem } from '@/utils/parsers/menu'
 
-const props = withDefaults(defineProps<{ item: MenuMapItem }>(), {})
+const props = defineProps<{ item: MenuItem }>()
+console.log(props.item)
 </script>
 
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.iconify {
+  width: 17px;
+  height: 100%;
+}
+</style>
