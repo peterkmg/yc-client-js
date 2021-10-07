@@ -1,14 +1,4 @@
-<template>
-  <a-menu
-    v-model:openKeys="v.keys.open"
-    v-model:selectedKeys="v.keys.selected"
-    mode="inline"
-    class="h-screen nav-menu"
-    selectable
-  >
-    <sidebar-menu-item v-for="item in menu" :key="item.title" :item="item" />
-  </a-menu>
-</template>
+<template></template>
 
 <script lang="ts" setup>
 import useAppStore from '@/store/app'
@@ -52,9 +42,9 @@ watch(
 onBeforeMount(() => f.menu.iconize(f.menu.build()))
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .nav-menu {
   border: 0;
-  background: @dark-grey;
+  background: $dark-grey;
 }
 </style>

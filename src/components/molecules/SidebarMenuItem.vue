@@ -7,7 +7,7 @@ const props = defineProps<{ item: MenuItem }>()
 console.log(props.item)
 </script>
 
-<style lang="less" scoped>
+<style lang="scss" scoped>
 .iconify {
   width: 17px;
   height: 100%;
